@@ -74,17 +74,12 @@ climate_map.fit_bounds(geojson_layer.get_bounds())
 legend_html = """
 <div style="position: fixed; bottom: 50px; left: 50px; width: 220px; height: 120px; 
             border:2px solid grey; z-index:9999; font-size:14px;
-            background-color:white;
-            ">&nbsp; Climate Types <br>
-    &nbsp; <i class="fa fa-square fa-1x" style="color: {{ color_type_III | default('#000') }};"></i> Type III <br>
-    &nbsp; <i class="fa fa-square fa-1x" style="color: {{ color_type_IV | default('#000') }};"></i> Type IV <br>
+            background-color:white;">
+    &nbsp; Climate Types <br>
+    &nbsp; <i class="fa fa-square fa-1x" style="color: #FFB3BA;">Type III</i> <br>
+    &nbsp; <i class="fa fa-square fa-1x" style="color: #FFFFD1;">Type IV</i> <br>
 </div>
-""".format(
-climate_type_colors["Type I"],
-climate_type_colors["Type II"],
-climate_type_colors["Type III"],
-climate_type_colors["Type IV"],
-)
+"""
 
 climate_map.get_root().html.add_child(folium.Element(legend_html))
 
@@ -106,6 +101,3 @@ f.write(f"""
 </body>
 
 </html>
-""")
-
-print("Map embedded in index.html")

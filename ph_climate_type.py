@@ -1,6 +1,7 @@
 import folium
 from folium.plugins import MiniMap, MeasureControl
-from geopy.geocoders import Nominatim
+
+# from geopy.geocoders import Nominatim
 import pandas as pd
 import geopandas as gpd
 
@@ -53,6 +54,7 @@ def style_function(feature):
         "fillOpacity": 0.7,
     }
 
+
 # Convert merged_data to GeoJSON once (already efficient)
 geojson_data = merged_data.to_crs(epsg=4326).__geo_interface__
 
@@ -89,3 +91,8 @@ legend_html = """
 
 climate_map.get_root().html.add_child(folium.Element(legend_html))
 
+# Save the map to an HTML file
+output_file = "ph_climate_map.html"
+climate_map.save(output_file)
+
+print(f"Map saved to {output_file}")
